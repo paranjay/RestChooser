@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
 
     private EditText userNameEditableField;
     private EditText passwordEditableField;
+    private static final String TAG = LoginFragment.class.getSimpleName();
 
 
     @Override
@@ -38,6 +40,7 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
         {
             case R.id.loginBtn:
                 System.out.println("login button pressed");
+                Log.d(TAG, "login button pressed log message");
                 break;
 
         }
