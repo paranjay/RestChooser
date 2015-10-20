@@ -43,8 +43,15 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="Login"
             android:id="@+id/loginBtn"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:id="@+id/signupBtn"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
 </RelativeLayout>
