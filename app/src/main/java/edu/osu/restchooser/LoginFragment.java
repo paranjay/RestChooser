@@ -31,6 +31,11 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
     private DatabaseHelper dh;
     private final static String OPT_NAME="name";
 
+    public void onResume(){
+        super.onResume();
+        Log.d(TAG, "on resume called");
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,7 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
         android.view.View btnSignup=findViewById(R.id.signupBtn);
         btnLogin.setOnClickListener(this);
         btnSignup.setOnClickListener(this);
+        Log.d(TAG, "activity created!!");
 
     }
 
@@ -56,14 +62,9 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
             SharedPreferences.Editor editor = settings.edit();
             editor.putString(OPT_NAME, username);
             editor.commit();
-            new AlertDialog.Builder(this)
-                    .setTitle("Success!")
-                    .setMessage("Login successful!")
-                    .setNeutralButton("Go back", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    })
-                    .show();
+            Log.d(TAG, "login successful for " + username);
+
+            startActivity(new Intent(this, CreateFilters.class));
         } else {
             new AlertDialog.Builder(this)
                     .setTitle("Error")
@@ -73,7 +74,14 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
                         }
                     })
                     .show();
+            Log.d(TAG, "login unsuccessful for " + username);
+
         }
+    }
+
+    public void onPause(){
+        super.onPause();
+        Log.d(TAG, "onPause called");
     }
 
     private void addUser(){
@@ -89,6 +97,7 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
                     }
                 })
                 .show();
+        Log.d(TAG, "new user added as " + username);
     }
 
     @Override
