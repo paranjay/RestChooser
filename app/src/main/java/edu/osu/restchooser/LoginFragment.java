@@ -57,6 +57,14 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
         String password = this.passwordEditableField.getText().toString();
         this.dh = new DatabaseHelper(this);
         List<String> names = this.dh.selectAll(username, password);
+        try
+        {
+            Thread.sleep(300);
+        }
+        catch (java.lang.InterruptedException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
         if (names.size() > 0) {
             SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor editor = settings.edit();

@@ -4,6 +4,24 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_create_filters">CreateFilters</string>
-    <string name="title_activity_yelp">Yelp</string>
-    <string name="yelp">Yelp</string>
+    <string-array name="DollarRatingArray">
+        <item>$</item>
+        <item>$$</item>
+        <item>$$$</item>
+        <item>$$$$</item>
+    </string-array>
+    <string-array name="ReviewRatingArray">
+        <item>2.5</item>
+        <item>3</item>
+        <item>3.5</item>
+        <item>4</item>
+        <item>4.5</item>
+    </string-array>
+    <string-array name="DistanceFilterArray">
+        <item>2 blocks</item>
+        <item>6 blocks</item>
+        <item>1 mile</item>
+        <item>5 miles</item>
+    </string-array>
+
 </resources>

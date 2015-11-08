@@ -25,19 +25,15 @@
         <activity
             android:name=".LoginFragment"
             android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".CreateFiltersFragment"
+            android:label="@string/title_activity_create_filters" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".CreateFilters"
-            android:label="@string/title_activity_create_filters" >
-        </activity>
-        <activity
-            android:name=".YelpActivity"
-            android:label="@string/title_activity_yelp">
         </activity>
     </application>
 
