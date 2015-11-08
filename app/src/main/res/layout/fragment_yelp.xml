@@ -38,6 +38,7 @@
             android:layout_height="wrap_content" />
 
         <Button
+            android:id="@+id/soundsGoodBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -45,6 +46,7 @@
             />
 
         <Button
+            android:id="@+id/tryAgainBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -52,6 +54,7 @@
             />
 
         <Button
+            android:id="@+id/differentFilterBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -60,6 +63,7 @@
 
 
         <Button
+            android:id="@+id/saveFilterBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
