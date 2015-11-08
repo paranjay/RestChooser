@@ -35,6 +35,10 @@
             android:name=".CreateFilters"
             android:label="@string/title_activity_create_filters" >
         </activity>
+        <activity
+            android:name=".YelpActivity"
+            android:label="@string/title_activity_yelp">
+        </activity>
     </application>
 
 </manifest>

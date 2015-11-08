@@ -4,4 +4,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_create_filters">CreateFilters</string>
+    <string name="title_activity_yelp">Yelp</string>
+    <string name="yelp">Yelp</string>
 </resources>
