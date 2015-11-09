@@ -1,8 +1,10 @@
 package edu.osu.restchooser;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -14,6 +16,14 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.beust.jcommander.JCommander;
+import com.google.android.gms.games.snapshot.SnapshotContentsEntityCreator;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.scribe.model.OAuthRequest;
+import org.scribe.model.Response;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -36,6 +46,8 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
     private Spinner dollarSpinner;
     private Spinner reviewSpinner;
     private Spinner distanceSpinner;
+
+    private static String yelpResponseString;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -82,13 +94,9 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
                 Log.w(TAG, distanceRange + "");
                 Log.w(TAG, cuisine);
                 boolean connected = checkInternet();
-                YelpAPICLI yelpApiCli = new YelpAPICLI();
-                yelpApiCli.location = "43202";
-                String [] arr = new String[]{};
-                new JCommander(yelpApiCli, new String[]{});
 
-                YelpAPI yelpApi = new YelpAPI();
-                yelpApi.queryAPI(yelpApiCli);
+                new DownloadWebpageTask().execute(new TaskParameter("43202", this));
+
                 break;
         }
     }
@@ -105,7 +113,6 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
         }
 
     }
-
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         Spinner selectedSpinner = (Spinner)parent;
@@ -132,6 +139,52 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
+    }
+
+    private class DownloadWebpageTask extends AsyncTask<TaskParameter, Void, Response> {
+
+        Context ctx;
+        @Override
+        protected Response doInBackground(TaskParameter... params)
+        {
+            YelpAPICLI yelpApiCli = new YelpAPICLI();
+            yelpApiCli.location = params[0].location;
+            ctx = params[0].context;
+            String [] arr = new String[]{};
+            new JCommander(yelpApiCli, new String[]{});
+            YelpAPI yelpApi = new YelpAPI();
+            return yelpApi.queryAPI(yelpApiCli);
+//            return request[0].send();
+        }
+
+        @Override
+        protected void onPostExecute(Response result) {
+
+
+            yelpResponseString = result.getBody();
+
+            String searchResponseJSON = yelpResponseString;
+            JSONParser parser = new JSONParser();
+            JSONObject response = null;
+            try {
+                response = (JSONObject) parser.parse(searchResponseJSON);
+            } catch (ParseException pe) {
+                System.out.println("Error: could not parse JSON response:");
+                System.out.println(searchResponseJSON);
+                System.exit(1);
+            }
+
+            JSONArray businesses = (JSONArray) response.get("businesses");
+            JSONObject firstBusiness = (JSONObject) businesses.get(0);
+            String firstBusinessID = firstBusiness.get("id").toString(); //randomize this
+//            String businessResponseJSON = this.searchByBusinessId(firstBusinessID.toString());
+
+            Log.w(TAG, yelpResponseString);
+            Log.w(TAG, firstBusinessID);
+
+            startActivity(new Intent(ctx, YelpActivity.class));
+
+        }
     }
 
 }

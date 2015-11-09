@@ -13,6 +13,8 @@ import org.scribe.oauth.OAuthService;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
+
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -30,7 +32,7 @@ public class YelpAPI {
     private static final String CONSUMER_SECRET = "vKjPwyz4n4Fst1vKX4f73EetgbM";
     private static final String TOKEN = "y94KnRQwnF9wbmz_QIahrEr2FKZgy07v";
     private static final String TOKEN_SECRET = "BjaH7j2LC9yKTzEOEd155suxGz4";
-    private static String yelpResponseString;
+
 
     OAuthService service;
     Token accessToken;
@@ -42,18 +44,17 @@ public class YelpAPI {
         this.accessToken = new Token(TOKEN, TOKEN_SECRET);
     }
 
-    public void searchForBusinessesByLocation(String term, String location) {
+    public Response searchForBusinessesByLocation(String term, String location) {
         OAuthRequest request = createOAuthRequest(SEARCH_PATH);
         request.addQuerystringParameter("term", term);
         request.addQuerystringParameter("location", location);
         request.addQuerystringParameter("limit", String.valueOf(SEARCH_LIMIT));
-        sendRequestAndGetResponse(request);
+        return sendRequestAndGetResponse(request);
     }
 
-    public String searchByBusinessId(String businessID) {
+    public Response searchByBusinessId(String businessID) {
         OAuthRequest request = createOAuthRequest(BUSINESS_PATH + "/" + businessID);
-        sendRequestAndGetResponse(request);
-        return "";
+        return sendRequestAndGetResponse(request);
     }
 
     private OAuthRequest createOAuthRequest(String path) {
@@ -61,56 +62,19 @@ public class YelpAPI {
         return request;
     }
 
-    private class DownloadWebpageTask extends AsyncTask<OAuthRequest, Void, Response> {
-        @Override
-        protected Response doInBackground(OAuthRequest... request) {
-            return request[0].send();
-        }
 
-        @Override
-        protected void onPostExecute(Response result) {
-            yelpResponseString = result.getBody();
 
-            String searchResponseJSON = yelpResponseString;
-            JSONParser parser = new JSONParser();
-            JSONObject response = null;
-            try {
-                response = (JSONObject) parser.parse(searchResponseJSON);
-            } catch (ParseException pe) {
-                System.out.println("Error: could not parse JSON response:");
-                System.out.println(searchResponseJSON);
-                System.exit(1);
-            }
-
-            JSONArray businesses = (JSONArray) response.get("businesses");
-            JSONObject firstBusiness = (JSONObject) businesses.get(0);
-            String firstBusinessID = firstBusiness.get("id").toString();
-            System.out.println(String.format(
-                    "%s businesses found, querying business info for the top result \"%s\" ...",
-                    businesses.size(), firstBusinessID));
-
-//            String businessResponseJSON = this.searchByBusinessId(firstBusinessID.toString());
-//            System.out.println(String.format("Result for business \"%s\" found:", firstBusinessID));
-//            System.out.println(businessResponseJSON);
-
-            Log.w(TAG, yelpResponseString);
-            Log.w(TAG, firstBusinessID);
-
-        }
-    }
-
-    private void sendRequestAndGetResponse(OAuthRequest request) {
+    private Response sendRequestAndGetResponse(OAuthRequest request) {
         System.out.println("Querying " + request.getCompleteUrl() + " ...");
         this.service.signRequest(this.accessToken, request);
         System.out.println(request);
-        new DownloadWebpageTask().execute(request);
-//        Response response = request.send();
+
+        return  request.send();
 //        return response.getBody();
     }
 
-    public void queryAPI(YelpAPICLI yelpApiCli) {
-        this.searchForBusinessesByLocation(yelpApiCli.term, yelpApiCli.location);
-
+    public Response queryAPI(YelpAPICLI yelpApiCli) {
+        return this.searchForBusinessesByLocation(yelpApiCli.term, yelpApiCli.location);
     }
 
     public static void main(String[] args) {

@@ -23,5 +23,6 @@
         <item>1 mile</item>
         <item>5 miles</item>
     </string-array>
+    <string name="title_activity_yelp">YelpActivity</string>
 
 </resources>
