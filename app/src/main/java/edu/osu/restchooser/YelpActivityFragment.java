@@ -1,11 +1,14 @@
 package edu.osu.restchooser;
 
+import android.os.AsyncTask;
 import android.util.Log;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.app.Fragment;
+
+import static java.lang.Thread.sleep;
 
 
 /**
@@ -16,6 +19,8 @@ public class YelpActivityFragment extends Fragment{
     public YelpActivityFragment() {
 
     }
+
+    int
 
     public void onResume() {
         super.onResume();
@@ -51,18 +56,31 @@ public class YelpActivityFragment extends Fragment{
     }
 
     private void chooseThisRest() {
-
+        //Move to map activity, insert this restaurant into db in list of already chosen restaurants
     }
 
     private void tryAgain() {
 
+        new chooseNewRestaurantTask().execute();
+
+        //Choose another random restaurant, then return to this activity
     }
 
     private void useDifferentFilter() {
-
+        //Go back to createfilters activity
     }
 
     private void saveThisFilter() {
+        //insert the filter used into the db for saved filters
+    }
 
+    private class chooseNewRestaurantTask extends AsyncTask<Void, Void, Void> {
+        protected void doInBackground(/* parameter describing filter */) {
+            //query yelp with the filter, while sleeping in foreground
+        }
+
+        protected void onPostExecute() {
+            //go to the yelp activity to show info
+        }
     }
 }
