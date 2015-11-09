@@ -1,5 +1,8 @@
 package edu.osu.restchooser;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -9,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import com.beust.jcommander.JCommander;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -76,8 +81,29 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
                 Log.w(TAG, reviewRating + "");
                 Log.w(TAG, distanceRange + "");
                 Log.w(TAG, cuisine);
+                boolean connected = checkInternet();
+                YelpAPICLI yelpApiCli = new YelpAPICLI();
+                yelpApiCli.location = "43202";
+                String [] arr = new String[]{};
+                new JCommander(yelpApiCli, new String[]{});
+
+                YelpAPI yelpApi = new YelpAPI();
+                yelpApi.queryAPI(yelpApiCli);
                 break;
         }
+    }
+
+    public boolean checkInternet()
+    {
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 
