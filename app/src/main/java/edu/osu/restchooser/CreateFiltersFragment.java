@@ -36,6 +36,7 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
     }
 
     private static final String TAG = CreateFiltersFragment.class.getSimpleName();
+    public static final String BUSINESSID = "BUSINESSID";
 
     private String dollarRating;
     private String reviewRating;
@@ -46,6 +47,7 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
     private Spinner dollarSpinner;
     private Spinner reviewSpinner;
     private Spinner distanceSpinner;
+    Button searchFilterBtn;
 
     private static String yelpResponseString;
 
@@ -77,7 +79,7 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
         distanceSpinner.setOnItemSelectedListener(this);
 
         cuisineEditableField = (EditText)findViewById(R.id.cuisineEditText);
-        Button searchFilterBtn = (Button)findViewById(R.id.searchFilterBtn);
+        searchFilterBtn = (Button)findViewById(R.id.searchFilterBtn);
         searchFilterBtn.setOnClickListener(this);
     }
 
@@ -94,7 +96,7 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
                 Log.w(TAG, distanceRange + "");
                 Log.w(TAG, cuisine);
                 boolean connected = checkInternet();
-
+                searchFilterBtn.setEnabled(false);
                 new DownloadWebpageTask().execute(new TaskParameter("43202", this));
 
                 break;
@@ -159,8 +161,6 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
 
         @Override
         protected void onPostExecute(Response result) {
-
-
             yelpResponseString = result.getBody();
 
             String searchResponseJSON = yelpResponseString;
@@ -179,10 +179,11 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
             String firstBusinessID = firstBusiness.get("id").toString(); //randomize this
 //            String businessResponseJSON = this.searchByBusinessId(firstBusinessID.toString());
 
-            Log.w(TAG, yelpResponseString);
+//            Log.w(TAG, yelpResponseString);
             Log.w(TAG, firstBusinessID);
-
-            startActivity(new Intent(ctx, YelpActivity.class));
+            Intent intent = new Intent(ctx, YelpActivityFragment.class);
+            intent.putExtra(BUSINESSID, firstBusinessID);
+            startActivity(intent);
 
         }
     }

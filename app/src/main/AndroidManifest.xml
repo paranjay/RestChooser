@@ -37,8 +37,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".YelpActivity"
+            android:name=".YelpActivityFragment"
             android:label="@string/title_activity_yelp" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.osu.restchooser.CreateFiltersFragment" />
+
         </activity>
     </application>
 
