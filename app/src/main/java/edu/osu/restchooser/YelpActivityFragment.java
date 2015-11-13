@@ -65,14 +65,12 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         businessID = intent.getStringExtra("BUSINESSID");
-//        return inflater.inflate(R.layout.fragment_yelp, container, false);
         Log.w(TAG, businessID);
         setContentView(R.layout.fragment_yelp);
 
         new GetRestaurantDetails().execute(businessID);
 
         restName = (TextView)findViewById(R.id.restName);
-        restName.setText(businessID);
         restCuisine = (TextView)findViewById(R.id.restCuisine);
         restRating = (TextView)findViewById(R.id.restRating);
         restNumReviews = (TextView)findViewById(R.id.restNumReviews);
@@ -244,6 +242,7 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
             Intent intent = new Intent(ctx, YelpActivityFragment.class);
             intent.putExtra("BUSINESSID", firstBusinessID);
             startActivity(intent);
+            finish();
 
         }
     }
