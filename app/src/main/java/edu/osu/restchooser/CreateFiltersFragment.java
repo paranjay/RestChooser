@@ -1,11 +1,18 @@
 package edu.osu.restchooser;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
@@ -13,23 +20,30 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.beust.jcommander.JCommander;
-import com.google.android.gms.games.snapshot.SnapshotContentsEntityCreator;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.scribe.model.OAuthRequest;
 import org.scribe.model.Response;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class CreateFiltersFragment extends FragmentActivity implements AdapterView.OnItemSelectedListener,
-        View.OnClickListener{
+        View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     public CreateFiltersFragment() {
 
@@ -48,12 +62,16 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
     private Spinner reviewSpinner;
     private Spinner distanceSpinner;
     Button searchFilterBtn;
+    private ProgressBar pb;
+    GoogleApiClient mGoogleApiClient;
+    Location mLastLocation;
 
     private static String yelpResponseString;
+    private String mLatitudeText = "39.9833";
+    private String mLongitudeText = "-82.9833";
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_create_filters);
 
@@ -81,11 +99,78 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
         cuisineEditableField = (EditText)findViewById(R.id.cuisineEditText);
         searchFilterBtn = (Button)findViewById(R.id.searchFilterBtn);
         searchFilterBtn.setOnClickListener(this);
+
+        buildGoogleApiClient();
+
+
+        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
+        // Define a listener that responds to location updates
+        LocationListener locationListener = new LocationListener() {
+            public void onLocationChanged(Location location) {
+                // Called when a new location is found by the network location provider.
+                makeUseOfNewLocation(location);
+            }
+
+            public void onStatusChanged(String provider, int status, Bundle extras) {}
+
+            public void onProviderEnabled(String provider) {}
+
+            public void onProviderDisabled(String provider) {}
+        };
+
+// Register the listener with the Location Manager to receive location updates
+        try
+        {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+        }
+        catch (SecurityException ex)
+        {
+            ex.printStackTrace();
+        }
+
+    }
+
+    private void makeUseOfNewLocation(Location location) {
+        mLatitudeText = Double.toString(location.getLatitude());
+        mLongitudeText = Double.toString(location.getLongitude());
     }
 
     @Override
-    public void onClick(View view)
-    {
+    public void onConnected(Bundle connectionHint) {
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+        if (mLastLocation != null) {
+            mLatitudeText = String.valueOf(mLastLocation.getLatitude());
+            mLongitudeText = String.valueOf(mLastLocation.getLongitude());
+        }
+    }
+
+    @Override
+    public void onConnectionSuspended(int cause) {
+        // The connection has been interrupted.
+        // Disable any UI components that depend on Google APIs
+        // until onConnected() is called.
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult result) {
+        // This callback is important for handling errors that
+        // may occur while attempting to connect with Google.
+        //
+        // More about this in the 'Handle Connection Failures' section.
+    }
+
+    protected synchronized void buildGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+    }
+
+    @Override
+    public void onClick(View view) {
         switch (view.getId())
         {
             case R.id.searchFilterBtn:
@@ -97,14 +182,15 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
                 Log.w(TAG, cuisine);
                 boolean connected = checkInternet();
                 searchFilterBtn.setEnabled(false);
-                new DownloadWebpageTask().execute(new TaskParameter("43202", this));
-
+                if(mLatitudeText != null && mLongitudeText != null)
+                {
+                    new GetRandomRestaurant().execute(new TaskParameter(mLatitudeText, mLongitudeText, this));
+                }
                 break;
         }
     }
 
-    public boolean checkInternet()
-    {
+    public boolean checkInternet() {
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
@@ -143,14 +229,15 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
-    private class DownloadWebpageTask extends AsyncTask<TaskParameter, Void, Response> {
+    private class GetRandomRestaurant extends AsyncTask<TaskParameter, Void, Response> {
 
         Context ctx;
         @Override
-        protected Response doInBackground(TaskParameter... params)
-        {
+        protected Response doInBackground(TaskParameter... params) {
             YelpAPICLI yelpApiCli = new YelpAPICLI();
-            yelpApiCli.location = params[0].location;
+//            yelpApiCli.location = params[0].latitude;
+            yelpApiCli.latitude = params[0].latitude;
+            yelpApiCli.longitude = params[0].longitude;
             ctx = params[0].context;
             String [] arr = new String[]{};
             new JCommander(yelpApiCli, new String[]{});
@@ -175,7 +262,8 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
             }
 
             JSONArray businesses = (JSONArray) response.get("businesses");
-            JSONObject firstBusiness = (JSONObject) businesses.get(0);
+            int rand = (int)(Math.random() * businesses.size());
+            JSONObject firstBusiness = (JSONObject) businesses.get(rand);
             String firstBusinessID = firstBusiness.get("id").toString(); //randomize this
 //            String businessResponseJSON = this.searchByBusinessId(firstBusinessID.toString());
 
@@ -184,7 +272,7 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
             Intent intent = new Intent(ctx, YelpActivityFragment.class);
             intent.putExtra(BUSINESSID, firstBusinessID);
             startActivity(intent);
-
+            finish();
         }
     }
 

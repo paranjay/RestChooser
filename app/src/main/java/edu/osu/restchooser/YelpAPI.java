@@ -22,7 +22,7 @@ import android.util.Log;
 public class YelpAPI {
 
     private static final String API_HOST = "api.yelp.com";
-    private static final int SEARCH_LIMIT = 3;
+    private static final int SEARCH_LIMIT = 15;
     private static final String SEARCH_PATH = "/v2/search";
     private static final String BUSINESS_PATH = "/v2/business";
 
@@ -44,10 +44,10 @@ public class YelpAPI {
         this.accessToken = new Token(TOKEN, TOKEN_SECRET);
     }
 
-    public Response searchForBusinessesByLocation(String term, String location) {
+    public Response searchForBusinessesByLocation(String term, String latitude, String longitude) {
         OAuthRequest request = createOAuthRequest(SEARCH_PATH);
         request.addQuerystringParameter("term", term);
-        request.addQuerystringParameter("location", location);
+        request.addQuerystringParameter("ll", latitude + "," + longitude);
         request.addQuerystringParameter("limit", String.valueOf(SEARCH_LIMIT));
         return sendRequestAndGetResponse(request);
     }
@@ -74,7 +74,7 @@ public class YelpAPI {
     }
 
     public Response queryAPI(YelpAPICLI yelpApiCli) {
-        return this.searchForBusinessesByLocation(yelpApiCli.term, yelpApiCli.location);
+        return this.searchForBusinessesByLocation(yelpApiCli.term, yelpApiCli.latitude, yelpApiCli.longitude);
     }
 
     public static void main(String[] args) {

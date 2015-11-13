@@ -72,7 +72,7 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
             editor.commit();
             Log.d(TAG, "login successful for " + username);
 
-            startActivity(new Intent(this, CreateFilters.class));
+            startActivity(new Intent(this, CreateFiltersFragment.class));
         } else {
             new AlertDialog.Builder(this)
                     .setTitle("Error")

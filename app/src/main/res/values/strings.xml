@@ -24,5 +24,6 @@
         <item>5 miles</item>
     </string-array>
     <string name="title_activity_yelp">YelpActivity</string>
+    <string name="title_activity_login_main">LoginMain</string>
 
 </resources>

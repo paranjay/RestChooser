@@ -6,11 +6,13 @@ import android.content.Context;
  * Created by paranjay on 11/9/15.
  */
 public class TaskParameter {
-    String location;
+    String latitude;
+    String longitude;
     Context context;
 
-    TaskParameter(String location, Context context) {
-        this.location = location;
+    TaskParameter(String latitude, String longitude, Context context) {
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.context = context;
     }
 }
