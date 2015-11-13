@@ -26,17 +26,34 @@ public class DatabaseHelper {
         this.context = context;
         RestarauntOpenHelper openHelper = new RestarauntOpenHelper(this.context);
         this.db = openHelper.getWritableDatabase();
-        this.insertStmt = this.db.compileStatement(INSERT_USER);
+
     }
 
     public long insert(String name, String password) {
+        this.insertStmt = this.db.compileStatement(INSERT_USER);
         this.insertStmt.bindString(1, name);
         this.insertStmt.bindString(2, password);
         return this.insertStmt.executeInsert();
     }
 
-    public long insertFilter(String )
+    public long insertFilter(String reviewRating, String distanceRange, String cuisine)
+    {
+        this.insertStmt = this.db.compileStatement(INSERT_FILTER);
+        this.insertStmt.bindString(1, reviewRating);
+        this.insertStmt.bindString(2, distanceRange);
+        this.insertStmt.bindString(3, cuisine);
+        return this.insertStmt.executeInsert();
+    }
 
+    public long insertRestaurant(String dollarRating, String reviewRating, String cuisine, String reviews)
+    {
+        this.insertStmt = this.db.compileStatement(RESTAURANT_FILTER);
+        this.insertStmt.bindString(1, dollarRating);
+        this.insertStmt.bindString(2, reviewRating);
+        this.insertStmt.bindString(3, cuisine);
+        this.insertStmt.bindString(3, reviews);
+        return this.insertStmt.executeInsert();
+    }
 
     public void deleteAll() {
 
