@@ -49,22 +49,14 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
         btnLogin.setOnClickListener(this);
         btnSignup.setOnClickListener(this);
         Log.d(TAG, "activity created!!");
-
     }
+
 
     private void checkLogin() {
         String username = this.userNameEditableField.getText().toString();
         String password = this.passwordEditableField.getText().toString();
         this.dh = new DatabaseHelper(this);
-        List<String> names = this.dh.selectAll(username, password);
-        try
-        {
-            Thread.sleep(300);
-        }
-        catch (java.lang.InterruptedException ex)
-        {
-            System.out.println(ex.getMessage());
-        }
+        List<String> names = this.dh.selectAllUsers(username, password);
         if (names.size() > 0) {
             SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor editor = settings.edit();
@@ -73,6 +65,7 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
             Log.d(TAG, "login successful for " + username);
 
             startActivity(new Intent(this, CreateFiltersFragment.class));
+            finish();
         } else {
             new AlertDialog.Builder(this)
                     .setTitle("Error")
@@ -83,7 +76,6 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
                     })
                     .show();
             Log.d(TAG, "login unsuccessful for " + username);
-
         }
     }
 
@@ -96,7 +88,7 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
         String username = this.userNameEditableField.getText().toString();
         String password = this.passwordEditableField.getText().toString();
         this.dh = new DatabaseHelper(this);
-        this.dh.insert(username, password);
+        this.dh.insertUser(username, password);
         new AlertDialog.Builder(this)
                 .setTitle("Success!")
                 .setMessage("User Added!")
@@ -118,7 +110,6 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
             case R.id.signupBtn:
                 addUser();
                 break;
-
         }
     }
 }

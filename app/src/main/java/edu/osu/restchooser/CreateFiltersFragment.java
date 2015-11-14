@@ -50,7 +50,7 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
     }
 
     private static final String TAG = CreateFiltersFragment.class.getSimpleName();
-    public static final String BUSINESSID = "BUSINESSID";
+
 
     private String dollarRating;
     private String reviewRating;
@@ -62,6 +62,7 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
     private Spinner reviewSpinner;
     private Spinner distanceSpinner;
     Button searchFilterBtn;
+    Button prevVisitedRestBtn;
     private ProgressBar pb;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
@@ -99,6 +100,8 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
         cuisineEditableField = (EditText)findViewById(R.id.cuisineEditText);
         searchFilterBtn = (Button)findViewById(R.id.searchFilterBtn);
         searchFilterBtn.setOnClickListener(this);
+        prevVisitedRestBtn = (Button)findViewById(R.id.prevVisitedRestBtn);
+        prevVisitedRestBtn.setOnClickListener(this);
 
         buildGoogleApiClient();
 
@@ -119,6 +122,7 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
             public void onProviderDisabled(String provider) {}
         };
 
+
 // Register the listener with the Location Manager to receive location updates
         try
         {
@@ -129,6 +133,13 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
             ex.printStackTrace();
         }
 
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        searchFilterBtn.setEnabled(true);
     }
 
     private void makeUseOfNewLocation(Location location) {
@@ -187,6 +198,12 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
                     new GetRandomRestaurant().execute(new TaskParameter(mLatitudeText, mLongitudeText, this));
                 }
                 break;
+            case R.id.prevVisitedRestBtn:
+                Intent intent = new Intent(this, RestaurantsFragment.class);
+                startActivity(intent);
+//                finish();
+                break;
+
         }
     }
 
@@ -270,9 +287,12 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
 //            Log.w(TAG, yelpResponseString);
             Log.w(TAG, firstBusinessID);
             Intent intent = new Intent(ctx, YelpActivityFragment.class);
-            intent.putExtra(BUSINESSID, firstBusinessID);
+            intent.putExtra(Constants.BUSINESS_ID, firstBusinessID);
+            intent.putExtra(Constants.DISTANCE_RANGE, distanceRange);
+            intent.putExtra(Constants.REVIEW_RATING, reviewRating);
+            intent.putExtra(Constants.CUISINE, cuisine);
             startActivity(intent);
-            finish();
+//            finish();
         }
     }
 

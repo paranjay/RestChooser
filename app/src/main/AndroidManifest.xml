@@ -36,6 +36,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".RestaurantsFragment"
+            android:label="@string/title_activity_restaurants" >
+        </activity>
+        <activity
             android:name=".YelpActivityFragment"
             android:label="@string/title_activity_yelp" >
             <meta-data

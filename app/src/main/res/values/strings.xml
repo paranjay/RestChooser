@@ -25,5 +25,6 @@
     </string-array>
     <string name="title_activity_yelp">YelpActivity</string>
     <string name="title_activity_login_main">LoginMain</string>
+    <string name="title_activity_restaurants">Restaurants</string>
 
 </resources>

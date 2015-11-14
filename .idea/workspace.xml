@@ -44,10 +44,63 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/YelpActivityFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="72" column="31" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
+              <caret line="68" column="20" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
               <folding>
-                <element signature="e#6025#6064#0" expanded="false" />
-                <element signature="e#6262#6316#0" expanded="false" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#6583#6622#0" expanded="false" />
+                <element signature="e#6820#6874#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_restaurants.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_restaurants.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.8709676">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="restaurant_row_layout.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/restaurant_row_layout.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.451613">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RestaurantsFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/RestaurantsFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7432432">
+              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#RestaurantsFragment#0" expanded="false" />
+                <element signature="method#RestaurantsFragment#0;class#RestaurantsFragment#0" expanded="false" />
+                <element signature="method#onItemClick#0;class#RestaurantsFragment#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MySimpleArrayAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/MySimpleArrayAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -57,19 +110,18 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/CreateFiltersFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="75" column="55" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="55" />
+              <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;class#CreateFiltersFragment#0" expanded="false" />
                 <element signature="method#CreateFiltersFragment#0;class#CreateFiltersFragment#0" expanded="false" />
                 <element signature="method#onConnectionSuspended#0;class#CreateFiltersFragment#0" expanded="false" />
-                <element signature="e#5678#5717#0" expanded="false" />
+                <element signature="e#5904#5943#0" expanded="false" />
                 <element signature="method#onConnectionFailed#0;class#CreateFiltersFragment#0" expanded="false" />
-                <element signature="e#5915#5969#0" expanded="false" />
-                <element signature="method#checkInternet#0;class#CreateFiltersFragment#0" expanded="false" />
+                <element signature="e#6141#6195#0" expanded="false" />
                 <element signature="method#onItemSelected#0;class#CreateFiltersFragment#0" expanded="false" />
                 <element signature="method#onNothingSelected#0;class#CreateFiltersFragment#0" expanded="false" />
-                <element signature="e#10212#10308#0" expanded="false" />
+                <element signature="e#10648#10744#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -79,27 +131,50 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/LoginFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="58" column="42" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#LoginFragment#0" expanded="false" />
-                <element signature="class#2788:2952" expanded="false" />
-                <element signature="method#onClick#0;class#2788:2952" expanded="false" />
-                <element signature="class#3594:3746" expanded="false" />
-                <element signature="method#onClick#0;class#3594:3746" expanded="false" />
+                <element signature="class#2633:2797" expanded="false" />
+                <element signature="method#onClick#0;class#2633:2797" expanded="false" />
+                <element signature="class#3442:3594" expanded="false" />
+                <element signature="method#onClick#0;class#3442:3594" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseHelper.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Restaurant.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/Restaurant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+              <folding>
+                <element signature="e#1232#1250#0" expanded="true" />
+                <element signature="e#1379#1409#0" expanded="true" />
+                <element signature="e#1527#1566#0" expanded="true" />
+                <element signature="e#1885#1921#0" expanded="true" />
+                <element signature="e#2037#2066#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/DatabaseHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9324324">
-              <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
-              <folding>
-                <element signature="method#selectAll#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#onUpgrade#0;class#RestarauntOpenHelper#0;class#DatabaseHelper#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,6 +184,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="layoutResourceFile_vertical" />
         <option value="Class" />
       </list>
     </option>
@@ -1454,7 +1530,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4336620667675" />
+        <entry key="$PROJECT_DIR$" value="4337083410751" />
         <entry key="C:\Users\alcoa\Desktop\RestChooser-master" value="4335896706360" />
       </map>
     </option>
@@ -1808,24 +1884,30 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/JsonParser.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/YelpAPI.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/TwoStepOAuth.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/YelpActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_filters.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_yelp.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/TaskParameter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/YelpAPICLI.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/YelpAPI.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/LocationListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/MyLocationListener.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/CreateFiltersFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/LoginFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_login_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_login_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/LoginMainFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/YelpActivityFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/Constants.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/Restaurant.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/DatabaseHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/YelpActivityFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_filters.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/LoginFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/CreateFiltersFragment.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_restaurants.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/restaurant_row_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/MySimpleArrayAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/RestaurantsFragment.java" />
       </list>
     </option>
   </component>
@@ -1833,8 +1915,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
-    <option name="y" value="24" />
+    <option name="x" value="-1535" />
+    <option name="y" value="-876" />
     <option name="width" value="1535" />
     <option name="height" value="876" />
   </component>
@@ -2023,6 +2105,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RestChooser-master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RestChooser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -2037,6 +2137,8 @@
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_23_x86" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/libs/json_simple-1.1.jar" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
@@ -2290,7 +2392,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1535" height="876" extended-state="6" />
+    <frame x="-1535" y="-876" width="1535" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934928" sideWeight="0.49764943" order="6" side_tool="false" content_ui="tabs" />
@@ -2305,7 +2407,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23638779" sideWeight="0.48959032" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934928" sideWeight="0.49764943" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32970452" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37051794" sideWeight="0.48421758" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37051794" sideWeight="0.48421758" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2337139" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -2346,18 +2448,24 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/CreateFiltersFragment.java</url>
-          <line>140</line>
+          <line>151</line>
           <properties />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/CreateFiltersFragment.java</url>
-          <line>134</line>
+          <line>145</line>
           <properties />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/YelpActivityFragment.java</url>
+          <line>155</line>
+          <properties />
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="23" />
+      <option name="time" value="26" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2394,10 +2502,10 @@
           <caret line="90" column="34" selection-start-line="90" selection-start-column="34" selection-end-line="90" selection-end-column="34" />
           <folding>
             <element signature="docComment;class#LoginFragment#0" expanded="false" />
-            <element signature="class#2788:2952" expanded="false" />
-            <element signature="method#onClick#0;class#2788:2952" expanded="false" />
-            <element signature="class#3594:3746" expanded="false" />
-            <element signature="method#onClick#0;class#3594:3746" expanded="false" />
+            <element signature="class#2633:2797" expanded="false" />
+            <element signature="method#onClick#0;class#2633:2797" expanded="false" />
+            <element signature="class#3442:3594" expanded="false" />
+            <element signature="method#onClick#0;class#3442:3594" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2439,10 +2547,10 @@
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#LoginFragment#0" expanded="false" />
-            <element signature="class#2788:2952" expanded="false" />
-            <element signature="method#onClick#0;class#2788:2952" expanded="false" />
-            <element signature="class#3594:3746" expanded="false" />
-            <element signature="method#onClick#0;class#3594:3746" expanded="false" />
+            <element signature="class#2633:2797" expanded="false" />
+            <element signature="method#onClick#0;class#2633:2797" expanded="false" />
+            <element signature="class#3442:3594" expanded="false" />
+            <element signature="method#onClick#0;class#3442:3594" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2501,13 +2609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4755043">
           <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -2578,14 +2679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/TaskParameter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/YelpAPICLI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2602,52 +2695,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.7419353">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_create_filters.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.48387095">
-          <caret line="1" column="72" selection-start-line="1" selection-start-column="72" selection-end-line="1" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
-          <folding>
-            <element signature="e#1232#1250#0" expanded="true" />
-            <element signature="e#1379#1409#0" expanded="true" />
-            <element signature="e#1527#1566#0" expanded="true" />
-            <element signature="e#1886#1915#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/YelpActivityFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="31" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
-          <folding>
-            <element signature="e#6025#6064#0" expanded="false" />
-            <element signature="e#6262#6316#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_yelp.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.7433414">
@@ -2659,47 +2706,180 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/CreateFiltersFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/TaskParameter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="55" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#CreateFiltersFragment#0" expanded="false" />
-            <element signature="method#CreateFiltersFragment#0;class#CreateFiltersFragment#0" expanded="false" />
-            <element signature="method#onConnectionSuspended#0;class#CreateFiltersFragment#0" expanded="false" />
-            <element signature="e#5678#5717#0" expanded="false" />
-            <element signature="method#onConnectionFailed#0;class#CreateFiltersFragment#0" expanded="false" />
-            <element signature="e#5915#5969#0" expanded="false" />
-            <element signature="method#checkInternet#0;class#CreateFiltersFragment#0" expanded="false" />
-            <element signature="method#onItemSelected#0;class#CreateFiltersFragment#0" expanded="false" />
-            <element signature="method#onNothingSelected#0;class#CreateFiltersFragment#0" expanded="false" />
-            <element signature="e#10212#10308#0" expanded="false" />
-          </folding>
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/LoginFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="42" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#LoginFragment#0" expanded="false" />
-            <element signature="class#2788:2952" expanded="false" />
-            <element signature="method#onClick#0;class#2788:2952" expanded="false" />
-            <element signature="class#3594:3746" expanded="false" />
-            <element signature="method#onClick#0;class#3594:3746" expanded="false" />
+            <element signature="class#2633:2797" expanded="false" />
+            <element signature="method#onClick#0;class#2633:2797" expanded="false" />
+            <element signature="class#3442:3594" expanded="false" />
+            <element signature="method#onClick#0;class#3442:3594" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/DatabaseHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9324324">
-          <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/CreateFiltersFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
           <folding>
-            <element signature="method#selectAll#0;class#DatabaseHelper#0" expanded="false" />
-            <element signature="method#onUpgrade#0;class#RestarauntOpenHelper#0;class#DatabaseHelper#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#CreateFiltersFragment#0" expanded="false" />
+            <element signature="method#CreateFiltersFragment#0;class#CreateFiltersFragment#0" expanded="false" />
+            <element signature="method#onConnectionSuspended#0;class#CreateFiltersFragment#0" expanded="false" />
+            <element signature="e#5904#5943#0" expanded="false" />
+            <element signature="method#onConnectionFailed#0;class#CreateFiltersFragment#0" expanded="false" />
+            <element signature="e#6141#6195#0" expanded="false" />
+            <element signature="method#onItemSelected#0;class#CreateFiltersFragment#0" expanded="false" />
+            <element signature="method#onNothingSelected#0;class#CreateFiltersFragment#0" expanded="false" />
+            <element signature="e#10648#10744#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/Restaurant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/Sdk/sources/android-23/android/view/LayoutInflater.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33175355">
+          <caret line="69" column="22" selection-start-line="69" selection-start-column="22" selection-end-line="69" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24881516">
+          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+          <folding>
+            <element signature="e#1232#1250#0" expanded="true" />
+            <element signature="e#1379#1409#0" expanded="true" />
+            <element signature="e#1527#1566#0" expanded="true" />
+            <element signature="e#1885#1921#0" expanded="true" />
+            <element signature="e#2037#2066#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_create_filters.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9411765">
+          <caret line="68" column="48" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
+          <folding>
+            <element signature="e#223#258#0" expanded="true" />
+            <element signature="e#284#319#0" expanded="true" />
+            <element signature="e#343#376#0" expanded="true" />
+            <element signature="e#403#436#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/YelpActivityFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="68" column="20" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6583#6622#0" expanded="false" />
+            <element signature="e#6820#6874#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_restaurants.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8709676">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/restaurant_row_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.451613">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/MySimpleArrayAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/RestaurantsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7432432">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#RestaurantsFragment#0" expanded="false" />
+            <element signature="method#RestaurantsFragment#0;class#RestaurantsFragment#0" expanded="false" />
+            <element signature="method#onItemClick#0;class#RestaurantsFragment#0" expanded="false" />
           </folding>
         </state>
       </provider>

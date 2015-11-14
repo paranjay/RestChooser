@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.os.AsyncTask;
+import android.provider.ContactsContract;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.beust.jcommander.JCommander;
 import com.google.android.gms.common.ConnectionResult;
@@ -21,9 +23,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.scribe.model.Response;
-import org.w3c.dom.Text;
-
-import static java.lang.Thread.sleep;
 
 
 /**
@@ -41,6 +40,12 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
     }
 
     String businessID;
+    String reviewRating;
+    String distanceRange;
+    String cuisine;
+    String reviews;
+    String address;
+
     TextView restName;
     TextView restCuisine;
     TextView restRating;
@@ -64,7 +69,12 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        businessID = intent.getStringExtra("BUSINESSID");
+        businessID = intent.getStringExtra(Constants.BUSINESS_ID);
+        reviewRating = intent.getStringExtra(Constants.REVIEW_RATING);
+        distanceRange = intent.getStringExtra(Constants.DISTANCE_RANGE);
+        cuisine = intent.getStringExtra(Constants.CUISINE);
+
+
         Log.w(TAG, businessID);
         setContentView(R.layout.fragment_yelp);
 
@@ -116,6 +126,8 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
             restName.setText(response.get("name").toString());
             restRating.setText(response.get("rating").toString());
             restNumReviews.setText(response.get("review_count").toString());
+            reviews = response.get("reviews").toString();
+
             JSONArray categories = (JSONArray)response.get("categories");
             String categoriesText = "";
             for(int i=0; i<categories.size(); i++)
@@ -132,6 +144,7 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
                 restAddress += "\n" + restAddressJSONArr.get(i).toString();
             }
             restLocation.setText(restAddress);
+            address = restAddress;
         }
     }
 
@@ -157,8 +170,9 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
     }
 
     private void chooseThisRest() {
-
-        //Move to map activity, insert this restaurant into db in list of already chosen restaurants
+        DatabaseHelper dh = new DatabaseHelper(this);
+        dh.insertRestaurant(businessID, address, reviewRating, cuisine, reviews);
+        Toast.makeText(getApplicationContext(), "Restaurant Saved!", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -235,12 +249,11 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
             int rand = (int)(Math.random() * businesses.size());
             JSONObject firstBusiness = (JSONObject) businesses.get(rand);
             String firstBusinessID = firstBusiness.get("id").toString(); //randomize this
-//            String businessResponseJSON = this.searchByBusinessId(firstBusinessID.toString());
 
-//            Log.w(TAG, yelpResponseString);
+            Log.w(TAG, yelpResponseString);
             Log.w(TAG, firstBusinessID);
             Intent intent = new Intent(ctx, YelpActivityFragment.class);
-            intent.putExtra("BUSINESSID", firstBusinessID);
+            intent.putExtra(Constants.BUSINESS_ID, firstBusinessID);
             startActivity(intent);
             finish();
 
