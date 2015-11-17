@@ -15,12 +15,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class LoginFragment extends FragmentActivity implements View.OnClickListener {
+public class LoginFragment extends FragmentActivity implements View.OnClickListener,
+        FacebookCallback<LoginResult>,
+        GraphRequest.GraphJSONObjectCallback{
 
     public LoginFragment() {
     }
@@ -30,6 +44,8 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
     private static final String TAG = LoginFragment.class.getSimpleName();
     private DatabaseHelper dh;
     private final static String OPT_NAME="name";
+    LoginButton loginButton;
+    CallbackManager callbackManager;
 
     public void onResume(){
         super.onResume();
@@ -40,6 +56,7 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.fragment_login);
         FragmentManager.enableDebugLogging(true);
         userNameEditableField=(EditText)findViewById(R.id.emailText);
@@ -48,7 +65,64 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
         android.view.View btnSignup=findViewById(R.id.signupBtn);
         btnLogin.setOnClickListener(this);
         btnSignup.setOnClickListener(this);
-        Log.d(TAG, "activity created!!");
+
+        callbackManager = CallbackManager.Factory.create();
+        loginButton = (LoginButton)findViewById(R.id.login_button);
+        //loginButton.setReadPermissions("user_friends");
+
+        loginButton.registerCallback(callbackManager, this);
+        
+
+    }
+
+
+    @Override
+    public void onCompleted(JSONObject jsonObject, GraphResponse graphResponse) {
+        try {
+            String userName = jsonObject.get("name").toString();
+            Log.w(TAG, userName);
+            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString(OPT_NAME, userName);
+            editor.commit();
+            Log.d(TAG, "DONE with adding user name");
+            startActivity(new Intent(this, CreateFiltersFragment.class));
+            finish();
+        } catch (JSONException e) {
+            Log.e(TAG, e.getMessage());
+        }
+    }
+
+    @Override
+    public void onSuccess(LoginResult loginResult) {
+        // App code
+        Log.w(TAG, "Facebook Login Success");
+
+        GraphRequest request = GraphRequest.newMeRequest(
+                loginResult.getAccessToken(), this);
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,name,gender");
+        request.setParameters(parameters);
+        request.executeAsync();
+
+
+    }
+
+    @Override
+    public void onCancel() {
+        Log.w(TAG, "Facebook  Login Cancel");
+    }
+
+    @Override
+    public void onError(FacebookException e) {
+        Log.w(TAG, "Facebook Login Error");
+        Log.w(TAG, e.getMessage());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
 
@@ -112,4 +186,5 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
                 break;
         }
     }
+
 }
