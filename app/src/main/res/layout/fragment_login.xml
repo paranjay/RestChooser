@@ -15,10 +15,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:layout_gravity="left"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:layout_gravity="left"/>
 
         <EditText
             android:layout_width="match_parent"

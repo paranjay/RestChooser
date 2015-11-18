@@ -75,7 +75,7 @@ public class YelpActivityFragment extends Fragment{
     }
 
     private class chooseNewRestaurantTask extends AsyncTask<Void, Void, Void> {
-        protected void doInBackground(/* parameter describing filter */) {
+        protected Void doInBackground(Void... params/* parameter describing filter */) {
             //query yelp with the filter, while sleeping in foreground
         }
 
