@@ -3,6 +3,7 @@ package edu.osu.restchooser;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -12,6 +13,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -25,6 +27,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.beust.jcommander.JCommander;
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -35,15 +42,12 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.scribe.model.Response;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
-
 /**
  * A placeholder fragment containing a simple view.
  */
 public class CreateFiltersFragment extends FragmentActivity implements AdapterView.OnItemSelectedListener,
-        View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+        View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener
+{
 
     public CreateFiltersFragment() {
 
@@ -74,6 +78,7 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.fragment_create_filters);
 
         dollarSpinner = (Spinner) findViewById(R.id.dollarSpinner);
@@ -105,10 +110,8 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
 
         buildGoogleApiClient();
 
-
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
-        // Define a listener that responds to location updates
         LocationListener locationListener = new LocationListener() {
             public void onLocationChanged(Location location) {
                 // Called when a new location is found by the network location provider.
@@ -122,8 +125,17 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
             public void onProviderDisabled(String provider) {}
         };
 
+        accessTokenTracker = new AccessTokenTracker() {
+            @Override
+            public void onCurrentAccessTokenChanged(
+                    AccessToken oldAccessToken,
+                    AccessToken currentAccessToken) {
+                Log.d(TAG, "onCurrentAccessTokenChanged " + currentAccessToken);
+                CreateFiltersFragment.this.logout(currentAccessToken);
+                CreateFiltersFragment.this.finish();
+            }
+        };
 
-// Register the listener with the Location Manager to receive location updates
         try
         {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
@@ -133,8 +145,29 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
             ex.printStackTrace();
         }
 
+        callbackManager = CallbackManager.Factory.create();
+        loginButton = (LoginButton)findViewById(R.id.login_button_filter);
+        //loginButton.setReadPermissions("user_friends");
+
     }
 
+    public void logout(AccessToken currentAccessToken)
+    {
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(CreateFiltersFragment.this);
+
+        if(currentAccessToken == null)
+        {
+            SharedPreferences.Editor editor = settings.edit();
+            editor.remove("name");
+            editor.commit();
+        }
+        startActivity(new Intent(CreateFiltersFragment.this, LoginFragment.class));
+    }
+
+
+    AccessTokenTracker accessTokenTracker;
+    LoginButton loginButton;
+    CallbackManager callbackManager;
     @Override
     public void onResume()
     {
@@ -245,6 +278,7 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
 
     public void onNothingSelected(AdapterView<?> parent) {
     }
+
 
     private class GetRandomRestaurant extends AsyncTask<TaskParameter, Void, Response> {
 

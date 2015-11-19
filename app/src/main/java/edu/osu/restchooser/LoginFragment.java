@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -52,13 +53,28 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
         Log.d(TAG, "on resume called");
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.fragment_login);
         FragmentManager.enableDebugLogging(true);
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+
+        AccessToken currentToken = AccessToken.getCurrentAccessToken();
+        if(currentToken == null)
+        {
+            SharedPreferences.Editor editor = settings.edit();
+            editor.remove(OPT_NAME);
+            editor.commit();
+        }
+
+        if(settings.getString(OPT_NAME, null) != null)
+        {
+            startActivity(new Intent(this, CreateFiltersFragment.class));
+            finish();
+        }
+
         userNameEditableField=(EditText)findViewById(R.id.emailText);
         passwordEditableField=(EditText)findViewById(R.id.passwordText);
         android.view.View btnLogin=findViewById(R.id.loginBtn);
@@ -71,10 +87,8 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
         //loginButton.setReadPermissions("user_friends");
 
         loginButton.registerCallback(callbackManager, this);
-        
 
     }
-
 
     @Override
     public void onCompleted(JSONObject jsonObject, GraphResponse graphResponse) {
@@ -104,8 +118,6 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
         parameters.putString("fields", "id,name,gender");
         request.setParameters(parameters);
         request.executeAsync();
-
-
     }
 
     @Override
@@ -124,7 +136,6 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
-
 
     private void checkLogin() {
         String username = this.userNameEditableField.getText().toString();
