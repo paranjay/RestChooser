@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.os.AsyncTask;
-import android.provider.ContactsContract;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.os.Bundle;
@@ -45,20 +44,25 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
     String cuisine;
     String reviews;
     String address;
+    String restLatitude;
+    String restLongitude;
+    String restName;
 
-    TextView restName;
-    TextView restCuisine;
-    TextView restRating;
-    TextView restNumReviews;
-    TextView restLocation;
+
+    TextView restNameTxt;
+    TextView restCuisineTxt;
+    TextView restRatingTxt;
+    TextView restNumReviewsTxt;
+    TextView restLocationTxt;
 
     Button soundsGoodBtn;
     Button tryAgainBtn;
     Button saveFilterBtn;
     Button differentFilterBtn;
+    Button gotoRestBtn;
 
-    private String mLatitudeText = "39.9833";
-    private String mLongitudeText = "-82.9833";
+    private String mLatitudeText = "40.0020458";
+    private String mLongitudeText = "-83.0150905";
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
 
@@ -80,11 +84,11 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
 
         new GetRestaurantDetails().execute(businessID);
 
-        restName = (TextView)findViewById(R.id.restName);
-        restCuisine = (TextView)findViewById(R.id.restCuisine);
-        restRating = (TextView)findViewById(R.id.restRating);
-        restNumReviews = (TextView)findViewById(R.id.restNumReviews);
-        restLocation = (TextView)findViewById(R.id.restLocation);
+        restNameTxt = (TextView)findViewById(R.id.restName);
+        restCuisineTxt = (TextView)findViewById(R.id.restCuisine);
+        restRatingTxt = (TextView)findViewById(R.id.restRating);
+        restNumReviewsTxt = (TextView)findViewById(R.id.restNumReviews);
+        restLocationTxt = (TextView)findViewById(R.id.restLocation);
 
         soundsGoodBtn = (Button)findViewById(R.id.soundsGoodBtn);
         soundsGoodBtn.setOnClickListener(this);
@@ -94,6 +98,8 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
         saveFilterBtn.setOnClickListener(this);
         differentFilterBtn = (Button)findViewById(R.id.differentFilterBtn);
         differentFilterBtn.setOnClickListener(this);
+        gotoRestBtn = (Button)findViewById(R.id.gotoRest);
+        gotoRestBtn.setOnClickListener(this);
     }
 
     private class GetRestaurantDetails extends AsyncTask<String, Void, Response> {
@@ -123,31 +129,41 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
                 System.exit(1);
             }
             Log.w(TAG, yelpResponseString);
-            restName.setText(response.get("name").toString());
-            restRating.setText(response.get("rating").toString());
-            restNumReviews.setText(response.get("review_count").toString());
-            reviews = response.get("reviews").toString();
+            try {
 
-            JSONArray categories = (JSONArray)response.get("categories");
-            String categoriesText = "";
-            for(int i=0; i<categories.size(); i++)
-            {
-                JSONArray category = (JSONArray)categories.get(i);
-                categoriesText+= ",  " + category.get(0).toString();
+                restName = response.get("name").toString();
+                restNameTxt.setText(restName);
+                restRatingTxt.setText(response.get("rating").toString());
+                restNumReviewsTxt.setText(response.get("review_count").toString());
+                reviews = response.get("reviews").toString();
+
+                JSONArray categories = (JSONArray) response.get("categories");
+                String categoriesText = "";
+                for (int i = 0; i < categories.size(); i++) {
+                    JSONArray category = (JSONArray) categories.get(i);
+                    categoriesText += ",  " + category.get(0).toString();
+                }
+                restCuisineTxt.setText(categoriesText.substring(2));
+                JSONObject restLocationJSON = (JSONObject) response.get("location");
+                Log.d(TAG, restLocationJSON.toJSONString());
+                restLatitude = ((JSONObject) restLocationJSON.get("coordinate")).get("latitude").toString();
+                restLongitude = ((JSONObject) restLocationJSON.get("coordinate")).get("longitude").toString();
+                JSONArray restAddressJSONArr = (JSONArray) restLocationJSON.get("display_address");
+                String restAddress = "";
+                for (int i = 0; i < restAddressJSONArr.size(); i++) {
+                    restAddress += "\n" + restAddressJSONArr.get(i).toString();
+                }
+                restLocationTxt.setText(restAddress);
+                address = restAddress;
             }
-            restCuisine.setText(categoriesText.substring(2));
-            JSONObject restLocationJSON = (JSONObject)response.get("location");
-            JSONArray restAddressJSONArr = (JSONArray)restLocationJSON.get("display_address");
-            String restAddress = "";
-            for(int i=0; i<restAddressJSONArr.size(); i++)
+            catch (Exception ex)
             {
-                restAddress += "\n" + restAddressJSONArr.get(i).toString();
+                Log.e(TAG, "onPostExecute "  + ex.getMessage());
+                new GetRandomRestaurant().execute(new TaskParameter(mLatitudeText, mLongitudeText, YelpActivityFragment.this));
+                finish();
             }
-            restLocation.setText(restAddress);
-            address = restAddress;
         }
     }
-
 
     @Override
     public void onClick(View view) {
@@ -163,6 +179,13 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
                 break;
             case R.id.saveFilterBtn:
                 saveThisFilter();
+                break;
+            case R.id.gotoRest:
+                Intent intent = new Intent(this, MapsActivity.class);
+                intent.putExtra("latitude", restLatitude);
+                intent.putExtra("longitude", restLongitude);
+                intent.putExtra("restName", restName);
+                startActivity(intent);
                 break;
             default:
                 break;
@@ -207,7 +230,6 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
                 .addApi(LocationServices.API)
                 .build();
     }
-
 
     private void tryAgain() {
         new GetRandomRestaurant().execute(new TaskParameter(mLatitudeText, mLongitudeText, this));
@@ -259,7 +281,6 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
 
         }
     }
-
 
     private void useDifferentFilter() {
         startActivity(new Intent(this, CreateFiltersFragment.class));

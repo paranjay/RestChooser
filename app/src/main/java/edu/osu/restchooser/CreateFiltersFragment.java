@@ -71,6 +71,10 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
 
+    AccessTokenTracker accessTokenTracker;
+    LoginButton loginButton;
+    CallbackManager callbackManager;
+
     private static String yelpResponseString;
     private String mLatitudeText = "39.9833";
     private String mLongitudeText = "-82.9833";
@@ -164,10 +168,6 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
         startActivity(new Intent(CreateFiltersFragment.this, LoginFragment.class));
     }
 
-
-    AccessTokenTracker accessTokenTracker;
-    LoginButton loginButton;
-    CallbackManager callbackManager;
     @Override
     public void onResume()
     {
@@ -278,7 +278,6 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
 
     public void onNothingSelected(AdapterView<?> parent) {
     }
-
 
     private class GetRandomRestaurant extends AsyncTask<TaskParameter, Void, Response> {
 

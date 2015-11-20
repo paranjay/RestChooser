@@ -67,6 +67,7 @@
                 android:textSize="14sp"/>
         </LinearLayout>
 
+
         <LinearLayout android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -113,6 +114,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Save this filter"
+            />
+
+        <Button
+            android:id="@+id/gotoRest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Goto Restaurant"
             />
 
 

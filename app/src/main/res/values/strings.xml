@@ -27,5 +27,6 @@
     <string name="title_activity_login_main">LoginMain</string>
     <string name="title_activity_restaurants">Restaurants</string>
     <string name="facebook_app_id">494003744093554</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 </resources>
