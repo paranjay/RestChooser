@@ -24,14 +24,14 @@ public class DatabaseHelper {
     private SQLiteStatement insertStmt;
     private static final String INSERT_USER = "insert into " + USERS_TABLE + "(name, password) values (?, ?)" ;
     private static final String INSERT_FILTER = "insert into " + FILTERS_TABLE + "(reviewRating, distanceRange, cuisine) values (?, ?, ?)" ;
-    private static final String RESTAURANT_FILTER = "insert into " + RESTAURANTS_TABLE + "(address, reviewRating, cuisine, reviews, businessId) " +
-            "values (?, ?, ?, ?, ?)" ;
+    private static final String RESTAURANT_FILTER = "insert into " + RESTAURANTS_TABLE + "(address, reviewRating, cuisine, reviews, businessId, name) " +
+            "values (?, ?, ?, ?, ?, ?)" ;
 
     public DatabaseHelper(Context context) {
         this.context = context;
         RestarauntOpenHelper openHelper = new RestarauntOpenHelper(this.context);
         this.db = openHelper.getWritableDatabase();
-        //openHelper.onUpgrade(this.db, 1, 2);
+        // openHelper.onUpgrade(this.db, 1, 2);
 
     }
 
@@ -51,7 +51,7 @@ public class DatabaseHelper {
         return this.insertStmt.executeInsert();
     }
 
-    public long insertRestaurant(String businessId, String address, String reviewRating, String cuisine, String reviews)
+    public long insertRestaurant(String businessId, String address, String reviewRating, String cuisine, String reviews, String name)
     {
         this.insertStmt = this.db.compileStatement(RESTAURANT_FILTER);
         this.insertStmt.bindString(1, address);
@@ -59,6 +59,7 @@ public class DatabaseHelper {
         this.insertStmt.bindString(3, cuisine);
         this.insertStmt.bindString(4, reviews);
         this.insertStmt.bindString(5, businessId);
+        this.insertStmt.bindString(6, name);
         return this.insertStmt.executeInsert();
     }
 
@@ -90,12 +91,12 @@ public class DatabaseHelper {
     {
         List<Restaurant> restaurants = new ArrayList<>();
         Cursor cursor = this.db.query(RESTAURANTS_TABLE, new String[]
-                        { "businessId", "address", "reviewRating", "cuisine", "reviews"},
-                null, null, null, null, null);
+                        { "businessId", "address", "reviewRating", "cuisine", "reviews, name"},
+                null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
             do {
                 Restaurant rest = new Restaurant(cursor.getString(0), cursor.getString(1),
-                        cursor.getString(2), cursor.getString(3),cursor.getString(4));
+                        cursor.getString(2), cursor.getString(3),cursor.getString(4), cursor.getString(5));
                 restaurants.add(rest);
             } while (cursor.moveToNext());
         }
@@ -117,7 +118,7 @@ public class DatabaseHelper {
             db.execSQL("CREATE TABLE " + FILTERS_TABLE + "(id INTEGER PRIMARY KEY, dollarRating TEXT, reviewRating TEXT, distanceRange TEXT," +
                     "cuisine TEXT )");
             db.execSQL("CREATE TABLE " + RESTAURANTS_TABLE + "(id INTEGER PRIMARY KEY, businessId Text, address TEXT, reviewRating TEXT, cuisine TEXT," +
-                    "reviews TEXT )");
+                    "reviews TEXT , name TEXT)");
 
         }
 

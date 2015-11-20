@@ -33,7 +33,7 @@ import java.util.List;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class LoginFragment extends FragmentActivity implements View.OnClickListener,
+public class LoginFragment extends FragmentActivity implements
         FacebookCallback<LoginResult>,
         GraphRequest.GraphJSONObjectCallback{
 
@@ -74,13 +74,6 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
             startActivity(new Intent(this, CreateFiltersFragment.class));
             finish();
         }
-
-        userNameEditableField=(EditText)findViewById(R.id.emailText);
-        passwordEditableField=(EditText)findViewById(R.id.passwordText);
-        android.view.View btnLogin=findViewById(R.id.loginBtn);
-        android.view.View btnSignup=findViewById(R.id.signupBtn);
-        btnLogin.setOnClickListener(this);
-        btnSignup.setOnClickListener(this);
 
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton)findViewById(R.id.login_button);
@@ -183,19 +176,6 @@ public class LoginFragment extends FragmentActivity implements View.OnClickListe
                 })
                 .show();
         Log.d(TAG, "new user added as " + username);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId())
-        {
-            case R.id.loginBtn:
-                checkLogin();
-                break;
-            case R.id.signupBtn:
-                addUser();
-                break;
-        }
     }
 
 }

@@ -76,8 +76,8 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
     CallbackManager callbackManager;
 
     private static String yelpResponseString;
-    private String mLatitudeText = "39.9833";
-    private String mLongitudeText = "-82.9833";
+    private String mLatitudeText = "40.0028979";
+    private String mLongitudeText = "-83.0150972";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,12 +85,12 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.fragment_create_filters);
 
-        dollarSpinner = (Spinner) findViewById(R.id.dollarSpinner);
-        ArrayAdapter<CharSequence> dollarAdapter = ArrayAdapter.createFromResource(this,
-                R.array.DollarRatingArray, android.R.layout.simple_spinner_item);
-        dollarAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        dollarSpinner.setAdapter(dollarAdapter);
-        dollarSpinner.setOnItemSelectedListener(this);
+//        dollarSpinner = (Spinner) findViewById(R.id.dollarSpinner);
+//        ArrayAdapter<CharSequence> dollarAdapter = ArrayAdapter.createFromResource(this,
+//                R.array.DollarRatingArray, android.R.layout.simple_spinner_item);
+//        dollarAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        dollarSpinner.setAdapter(dollarAdapter);
+//        dollarSpinner.setOnItemSelectedListener(this);
 
         reviewSpinner = (Spinner) findViewById(R.id.reviewSpinner);
         ArrayAdapter<CharSequence> reviewAdapter = ArrayAdapter.createFromResource(this,
@@ -152,7 +152,6 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton)findViewById(R.id.login_button_filter);
         //loginButton.setReadPermissions("user_friends");
-
     }
 
     public void logout(AccessToken currentAccessToken)
@@ -257,14 +256,13 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
         int viewId = selectedSpinner.getId();
         switch (viewId)
         {
-            case R.id.dollarSpinner:
-                Log.w(TAG, "dollar Spinner selected at position " + pos);
-                if (parent.getItemAtPosition(pos) != null)
-                {
-                    dollarRating = parent.getItemAtPosition(pos).toString();
-                }
-
-                break;
+//            case R.id.dollarSpinner:
+//                Log.w(TAG, "dollar Spinner selected at position " + pos);
+//                if (parent.getItemAtPosition(pos) != null)
+//                {
+//                    dollarRating = parent.getItemAtPosition(pos).toString();
+//                }
+//                break;
             case R.id.reviewSpinner:
                 Log.w(TAG, "review Spinner selected at position " + pos);
                 reviewRating = parent.getItemAtPosition(pos).toString();
@@ -293,7 +291,6 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
             new JCommander(yelpApiCli, new String[]{});
             YelpAPI yelpApi = new YelpAPI();
             return yelpApi.queryAPI(yelpApiCli);
-//            return request[0].send();
         }
 
         @Override

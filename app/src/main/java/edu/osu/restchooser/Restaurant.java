@@ -9,14 +9,17 @@ public class Restaurant {
     String address;
     String businessId;
     String reviewRating;
+    String name;
 
     public Restaurant(String businessId, String address, String reviewRating, String cuisine,
-                      String reviews)
+                      String reviews, String name)
     {
         this.cuisine = cuisine;
         this.reviews = reviews;
         this.address = address;
         this.businessId = businessId;
         this.reviewRating = reviewRating;
+        this.name = name;
+
     }
 }

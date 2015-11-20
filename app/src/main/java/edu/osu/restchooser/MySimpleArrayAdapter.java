@@ -29,10 +29,17 @@ public class MySimpleArrayAdapter extends ArrayAdapter<Restaurant> {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.restaurant_row_layout, parent, false);
         TextView restName = (TextView)rowView.findViewById(R.id.nameText);
+        TextView addressText = (TextView)rowView.findViewById(R.id.addressText);
+        TextView cuisineText = (TextView)rowView.findViewById(R.id.cuisineText);
         TextView restRating = (TextView)rowView.findViewById(R.id.reviewRatingText);
+        TextView reviewsText = (TextView)rowView.findViewById(R.id.reviewsText);
 
-        restName.setText(values.get(position).businessId);
+
+        restName.setText(values.get(position).name);
+        addressText.setText(values.get(position).address);
+        cuisineText.setText(values.get(position).cuisine);
         restRating.setText(values.get(position).reviewRating);
+        reviewsText.setText(values.get(position).reviews);
 
         return rowView;
     }
