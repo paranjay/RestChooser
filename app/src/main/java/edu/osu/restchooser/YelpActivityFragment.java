@@ -95,8 +95,8 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
         soundsGoodBtn.setOnClickListener(this);
         tryAgainBtn = (Button)findViewById(R.id.tryAgainBtn);
         tryAgainBtn.setOnClickListener(this);
-        saveFilterBtn = (Button)findViewById(R.id.saveFilterBtn);
-        saveFilterBtn.setOnClickListener(this);
+//        saveFilterBtn = (Button)findViewById(R.id.saveFilterBtn);
+//        saveFilterBtn.setOnClickListener(this);
         differentFilterBtn = (Button)findViewById(R.id.differentFilterBtn);
         differentFilterBtn.setOnClickListener(this);
     }
@@ -150,7 +150,22 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
                 Log.d(TAG, restLocationJSON.toJSONString());
                 restLatitude = ((JSONObject) restLocationJSON.get("coordinate")).get("latitude").toString();
                 restLongitude = ((JSONObject) restLocationJSON.get("coordinate")).get("longitude").toString();
-
+                restRating = response.get("rating").toString();
+                restCuisine = categoriesText.substring(2);
+                Log.d(TAG, cuisine);
+                Log.d(TAG, restCuisine);
+                boolean reset = false;
+                if(!cuisine.equals("") && !restCuisine.toLowerCase().contains(cuisine.toLowerCase()))
+                    reset = true;
+                else if (Double.parseDouble(restRating) < Double.parseDouble(reviewRating))
+                    reset = true;
+                //else distance check
+                if(reset)
+                {
+                    Log.d(TAG, "resetting restaurant");
+                    new GetRandomRestaurant().execute(new TaskParameter(mLatitudeText, mLongitudeText, YelpActivityFragment.this));
+                    finish();
+                }
 
 
                 JSONArray restAddressJSONArr = (JSONArray) restLocationJSON.get("display_address");
@@ -158,10 +173,8 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
                 for (int i = 0; i < restAddressJSONArr.size(); i++) {
                     restAddress += "\n" + restAddressJSONArr.get(i).toString();
                 }
-                restCuisine = categoriesText.substring(2);
                 restCuisineTxt.setText(restCuisine);
                 restNameTxt.setText(restName);
-                restRating = response.get("rating").toString();
                 restRatingTxt.setText(restRating);
                 restNumReviewsTxt.setText(response.get("review_count").toString());
                 restLocationTxt.setText(restAddress);
@@ -194,9 +207,9 @@ public class YelpActivityFragment extends FragmentActivity implements View.OnCli
             case R.id.differentFilterBtn:
                 useDifferentFilter();
                 break;
-            case R.id.saveFilterBtn:
-                saveThisFilter();
-                break;
+//            case R.id.saveFilterBtn:
+//                saveThisFilter();
+//                break;
             default:
                 break;
         }

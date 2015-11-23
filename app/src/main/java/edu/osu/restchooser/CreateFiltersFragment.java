@@ -165,6 +165,7 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
             editor.commit();
         }
         startActivity(new Intent(CreateFiltersFragment.this, LoginFragment.class));
+        finish();
     }
 
     @Override

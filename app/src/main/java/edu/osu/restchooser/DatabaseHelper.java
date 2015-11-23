@@ -31,7 +31,7 @@ public class DatabaseHelper {
         this.context = context;
         RestarauntOpenHelper openHelper = new RestarauntOpenHelper(this.context);
         this.db = openHelper.getWritableDatabase();
-        // openHelper.onUpgrade(this.db, 1, 2);
+//         openHelper.onUpgrade(this.db, 1, 2);
 
     }
 
