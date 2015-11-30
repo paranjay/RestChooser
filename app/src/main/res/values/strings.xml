@@ -23,6 +23,80 @@
         <item>15 miles</item>
         <item>20 miles</item>
     </string-array>
+    <string-array name="CuisineFilterArray">
+        <item>African</item>
+        <item>American (New)</item>
+        <item>American (Traditional)</item>
+        <item>Asian Fusion</item>
+        <item>Australian</item>
+        <item>Barbeque</item>
+        <item>Brazilian</item>
+        <item>Breakfast & Brunch</item>
+        <item>British</item>
+        <item>Buffets</item>
+        <item>Burgers</item>
+        <item>Cafes</item>
+        <item>Cafeteria</item>
+        <item>Cajun/Creole</item>
+        <item>Cheesesteaks</item>
+        <item>Chicken Shop</item>
+        <item>Chicken Wings</item>
+        <item>Chinese</item>
+        <item>Comfort Food</item>
+        <item>Cuban</item>
+        <item>Delis</item>
+        <item>Diners</item>
+        <item>Fast Food</item>
+        <item>Filipino</item>
+        <item>Fish & Chips</item>
+        <item>Fondue</item>
+        <item>Food Court</item>
+        <item>Food Stands</item>
+        <item>French</item>
+        <item>German</item>
+        <item>Gluten-Free</item>
+        <item>Greek</item>
+        <item>Hawaiian</item>
+        <item>Hot Dogs</item>
+        <item>Indian</item>
+        <item>Irish</item>
+        <item>Italian</item>
+        <item>Japanese</item>
+        <item>Korean</item>
+        <item>Kosher</item>
+        <item>Latin American</item>
+        <item>Live/Raw Food</item>
+        <item>Mediterranean</item>
+        <item>Mexican</item>
+        <item>Middle Eastern</item>
+        <item>Modern European</item>
+        <item>Mongolian</item>
+        <item>Persian/Iranian</item>
+        <item>Pizza</item>
+        <item>Polish</item>
+        <item>Portuguese</item>
+        <item>Russian</item>
+        <item>Salad</item>
+        <item>Sandwiches</item>
+        <item>Scottish</item>
+        <item>Seafood</item>
+        <item>Soul Food</item>
+        <item>Soup</item>
+        <item>Southern</item>
+        <item>Spanish</item>
+        <item>Steakhouses</item>
+        <item>Supper Clubs</item>
+        <item>Sushi Bars</item>
+        <item>Taiwanese</item>
+        <item>Tapas Bars</item>
+        <item>Tapas/Small Plates</item>
+        <item>Tex-Mex</item>
+        <item>Thai</item>
+        <item>Turkish</item>
+        <item>Vegan</item>
+        <item>Vegetarian</item>
+        <item>Vietnamese</item>
+    </string-array>
     <string name="title_activity_yelp">YelpActivity</string>
     <string name="title_activity_login_main">LoginMain</string>
     <string name="title_activity_restaurants">Restaurants</string>

@@ -65,6 +65,7 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
     private Spinner dollarSpinner;
     private Spinner reviewSpinner;
     private Spinner distanceSpinner;
+    private Spinner cuisineSpinner;
     Button searchFilterBtn;
     Button prevVisitedRestBtn;
     private ProgressBar pb;
@@ -105,6 +106,12 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
         distanceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         distanceSpinner.setAdapter(distanceAdapter);
         distanceSpinner.setOnItemSelectedListener(this);
+
+        cuisineSpinner = (Spinner) findViewById(R.id.cuisineSpinner);
+        ArrayAdapter<CharSequence> cuisineAdapter = ArrayAdapter.createFromResource(this, R.array.CuisineFilterArray, android.R.layout.simple_spinner_item);
+        cuisineAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        cuisineSpinner.setAdapter(cuisineAdapter);
+        cuisineSpinner.setOnItemSelectedListener(this);
 
         cuisineEditableField = (EditText)findViewById(R.id.cuisineEditText);
         searchFilterBtn = (Button)findViewById(R.id.searchFilterBtn);
