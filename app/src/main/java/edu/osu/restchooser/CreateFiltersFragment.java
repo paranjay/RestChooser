@@ -61,7 +61,7 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
     private String distanceRange;
     private String cuisine;
 
-    private EditText cuisineEditableField;
+    //private EditText cuisineEditableField;
     private Spinner dollarSpinner;
     private Spinner reviewSpinner;
     private Spinner distanceSpinner;
@@ -225,7 +225,7 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
         switch (view.getId())
         {
             case R.id.searchFilterBtn:
-                cuisine = cuisineEditableField.getText().toString();
+                //cuisine = cuisineEditableField.getText().toString();
                 Log.w(TAG, "filter search button clicked ");
                 Log.w(TAG, dollarRating + "");
                 Log.w(TAG, reviewRating + "");
@@ -278,6 +278,10 @@ public class CreateFiltersFragment extends FragmentActivity implements AdapterVi
             case R.id.distanceSpinner:
                 Log.w(TAG, "distance Spinner selected at position " + pos);
                 distanceRange = parent.getItemAtPosition(pos).toString();
+                break;
+            case R.id.cuisineSpinner;
+                Log.w(TAG, "cuisine Spinner selected at position " + pos);
+                cuisine = parent.getItemAtPosition(pos).toString();
                 break;
         }
     }

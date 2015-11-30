@@ -43,10 +43,6 @@
                 android:id="@+id/cuisineSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="50dp" />
-            <EditText
-                android:id="@+id/cuisineEditText"
-                android:layout_width="match_parent"
-                android:layout_height="50dp" />
         </LinearLayout>
         <Button
             android:layout_width="fill_parent"
