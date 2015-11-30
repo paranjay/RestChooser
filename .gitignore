@@ -11,7 +11,8 @@
 # Generated files
 bin/
 gen/
-.idea/ 
+.idea/* 
+.idea/workspace.xml
 # Gradle files
 .gradle/
 build/

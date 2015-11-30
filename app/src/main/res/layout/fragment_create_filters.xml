@@ -8,28 +8,63 @@
     <LinearLayout android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <Spinner
-            android:id="@+id/dollarSpinner"
+        <LinearLayout android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <Spinner
-            android:id="@+id/reviewSpinner"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="How Good?"/>
+            <Spinner
+                android:id="@+id/reviewSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <Spinner
-            android:id="@+id/distanceSpinner"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="How Far?"/>
+            <Spinner
+                android:id="@+id/distanceSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:id="@+id/cuisineEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="What Type of food?"/>
+            <EditText
+                android:id="@+id/cuisineEditText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+        </LinearLayout>
         <Button
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:text="Search for Restaurants"
             android:id="@+id/searchFilterBtn"
             android:layout_gravity="center_horizontal" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:text="View Previously Visited Restaurants"
+            android:id="@+id/prevVisitedRestBtn"
+            android:layout_gravity="center_horizontal" />
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp" />
+
     </LinearLayout>
 
 

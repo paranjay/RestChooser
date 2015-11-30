@@ -18,42 +18,77 @@
             android:id="@+id/yelpTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Random Restaurant Is..."
-            android:textSize="24sp"
-            android:textStyle="bold|italic"
+            android:text="You should goto : "
+            android:textSize="18sp"
+
             android:layout_gravity="left"/>
 
         <TextView
             android:id="@+id/restName"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textStyle="bold|italic"
+            android:textSize="24sp"/>
 
         <TextView
             android:id="@+id/restLocation"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textSize="16sp"/>
 
-        <TextView
-            android:id="@+id/restCuisine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Type of food: "/>
+            <TextView
+                android:id="@+id/restCuisine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"/>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/restRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Restaurant Rating: "/>
 
-        <TextView
-            android:id="@+id/restPriceRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/restRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Number of Reviews: "/>
+            <TextView
+                android:id="@+id/restNumReviews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"/>
+        </LinearLayout>
 
         <Button
             android:id="@+id/soundsGoodBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Sounds good!"
+            android:text="Let's GO!!"
             />
 
         <Button
@@ -73,13 +108,6 @@
             />
 
 
-        <Button
-            android:id="@+id/saveFilterBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Save this filter"
-            />
 
 
     </LinearLayout>
