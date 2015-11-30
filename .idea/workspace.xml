@@ -11,9 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f11cf8dd-dd91-46b9-bd45-49797d95da05" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/CreateFiltersFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/osu/restchooser/CreateFiltersFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_filters.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_filters.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="RestChooser-master.iws" />
@@ -2534,7 +2531,13 @@
       <option name="project" value="LOCAL" />
       <updated>1447830936173</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="cuisine spinner">
+      <created>1448868626060</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1448868626060</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2627,7 +2630,8 @@
     <MESSAGE value="more yelp stuff" />
     <MESSAGE value="basis of asynctask for choosing restaurant" />
     <MESSAGE value="added filter save screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="added filter save screen" />
+    <MESSAGE value="cuisine spinner" />
+    <option name="LAST_COMMIT_MESSAGE" value="cuisine spinner" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
